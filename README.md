@@ -1,5 +1,5 @@
 # Deckard-Kotlin
-[![Build Status](https://travis-ci.org/GAumala/deckard.svg?branch=master)](https://travis-ci.org/GAumala/deckard)
+[![Build Status](https://travis-ci.org/GAumala/deckard-kotlin.svg?branch=master)](https://travis-ci.org/GAumala/deckard-kotlin)
 [![Circle CI](https://circleci.com/gh/robolectric/deckard.svg?style=svg)](https://circleci.com/gh/robolectric/deckard)
 
 Deckard-Kotlin is the simplest possible Kotlin Android application project that uses Robolectric/Espresso for testing and Gradle to build. It has one Activity, a single Robolectric test of that Activity, and an Espresso test of that Activity.
