@@ -1,11 +1,15 @@
 buildscript {
+    ext.kotlin_version = '1.1.51'
+
     repositories {
         jcenter()
         google()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta6'
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -17,10 +21,11 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.1'
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 18
@@ -40,23 +45,33 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
 }
 
 configurations.all {
     resolutionStrategy {
-        force 'com.android.support:support-v4:26.0.1'
+        force 'com.android.support:support-v4:26.0.2'
     }
 }
 
 dependencies {
+    // Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     // Support v4
-    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:support-v4:26.0.2'
 
     // Espresso
-    androidTestImplementation 'com.android.support:support-annotations:26.1.0'
+    androidTestImplementation 'com.android.support:support-annotations:26.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
 
     // Robolectric
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:3.5.1'
 }
+
